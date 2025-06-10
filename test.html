@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabeel Ahmed Ansari | AI/ML Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid #764ba2;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        /* Experience Cards */
+        .experience-card, .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover, .project-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 600;
+            margin: 0.2rem 0;
+        }
+
+        .date {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+
+        .card-content li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Education */
+        .education-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #667eea;
+        }
+
+        .degree {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .university {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gpa {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Nabeel Ahmed Ansari</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Nabeel Ahmed Ansari</h1>
+                <p class="subtitle">AI/ML Engineer & Research Assistant</p>
+                <p class="description">
+                    Passionate about developing cutting-edge AI solutions with expertise in deep learning, computer vision, and natural language processing. Currently pursuing MS in Computer Science with focus on tumor detection and image segmentation.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item floating">
+                        <span>📧</span>
+                        <span>nabeel.ansari2000@outlook.com</span>
+                    </div>
+                    <div class="contact-item floating">
+                        <span>📱</span>
+                        <span>+1 (551) 998-9115</span>
+                    </div>
+                    <div class="contact-item floating">
+                        <span>📍</span>
+                        <span>New York, NY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="experience" class="section fade-in">
+                <div class="section-header">
+                    <h2>Professional Experience</h2>
+                    <p>Building innovative AI solutions and optimizing IT operations</p>
+                </div>
+                <div class="section-content">
+                    <div class="experience-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">Research Assistant under Dr. Jie Wei</div>
+                                <div class="company">Research Foundation CUNY</div>
+                            </div>
+                            <div class="date">Jan 2025 – May 2025</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Developing a tumor detection model using UNet and SAM2 with LLM, effectively segmenting tumors from real CT scans despite a small dataset (570 images)</li>
+                                <li>Engineering an image segmentation pipeline employing UNet, SAM and SAM2 for automated tumor detection with accuracy score up to 90%</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">IT Support Assistant (Automation Focus)</div>
+                                <div class="company">City University of New York</div>
+                            </div>
+                            <div class="date">Feb 2024 – Present</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Automated task management and license compliance, while deploying and troubleshooting Windows images using MDT & SCCM</li>
+                                <li>Managed and maintained Active Directory for 520+ users while optimizing IT operations with SysAid for incidents, assets, and service desk management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">Co-Founder</div>
+                                <div class="company">BirdLens (Bird Species Identifier)</div>
+                            </div>
+                            <div class="date">Jan 2021 – June 2021</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Launched an AI-based web application to identify bird species in real-time using custom-trained TensorFlow models</li>
+                                <li>Led a team of 5 engineers; directed MVP development, product strategy, and usability testing with local birdwatching communities</li>
+                                <li>Achieved 97% detection accuracy and grew a beta user base to 50+ active users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section fade-in">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>Innovative AI/ML solutions and applications</p>
+                </div>
+                <div class="section-content">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">RAG Document Q&A Chatbot</div>
+                                <div class="company">Python, RAG, LLM, LangChain, FAISS, Streamlit</div>
+                            </div>
+                            <div class="date">Jan 2025 – Feb 2025</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Implemented RAG pipeline using NVIDIA NIM (ChatNVIDIA) and LangChain, achieving fast and contextually accurate responses from PDF documents</li>
+                                <li>Optimized document retrieval by vector embedding text with NVIDIA Embeddings and storing in FAISS, reducing query response time to milliseconds</li>
+                                <li>Developed a scalable Streamlit UI, enabling real-time Q&A with expandable document references for enhanced user transparency</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">Movie Recommender</div>
+                                <div class="company">Python, Scikit Learn, Beautiful-soup, Flask, NLTK</div>
+                            </div>
+                            <div class="date">Aug 2024 – Dec 2024</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Engineered recommendation engine using Cosine Similarity based on Natural Language processing with Accuracy score of 97%</li>
+                                <li>Implemented real-time web scraping with BeautifulSoup4 to extract IMDb reviews via TMDB API and performed sentiment analysis to classify feedback</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">Essay Scorer</div>
+                                <div class="company">Transformers (Hugging Face), PyTorch, scikit-learn</div>
+                            </div>
+                            <div class="date">Jan 2024 – May 2024</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Achieved prediction accuracy with a Quadratic Weighted Kappa (QWK) score of at least 0.80 to ensure high-quality grading</li>
+                                <li>Fine-tuned Funnel Transformer with 10-fold cross-validation for essay scoring, keeping validation loss under 0.40</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="job-title">Facial Attendance System</div>
+                                <div class="company">Python, TensorFlow, Keras, SQLite3, OpenCV</div>
+                            </div>
+                            <div class="date">Jan 2023 - Apr 2023</div>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Computer vision leveraged through OpenCV with real-time facial recognition to automate attendance recording, reducing error by 98%</li>
+                                <li>Utilized advanced facial recognition technology, mapping 128 features to create a 3D grid-like structure for highly accurate identification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section fade-in">
+                <div class="section-header">
+                    <h2>Technical Skills</h2>
+                    <p>Comprehensive expertise across AI/ML and software development</p>
+                </div>
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Programming Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">Shell Scripting</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>AI/ML Frameworks</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">LangGraph</span>
+                                <span class="skill-tag">RAG</span>
+                                <span class="skill-tag">LangChain</span>
+                                <span class="skill-tag">LLM</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">Sklearn</span>
+                                <span class="skill-tag">PyTorch</span>
+                                <span class="skill-tag">TensorFlow</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Web Development</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">Flask</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">AngularJS</span>
+                                <span class="skill-tag">Node.js</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Developer Tools</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">EC2</span>
+                                <span class="skill-tag">S3</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section fade-in">
+                <div class="section-header">
+                    <h2>Education</h2>
+                    <p>Academic foundation in computer science and AI</p>
+                </div>
+                <div class="section-content">
+                    <div class="education-card">
+                        <div class="degree">Master of Science in Computer Science</div>
+                        <div class="university">City University of New York – The City College of New York</div>
+                        <div class="gpa">GPA: 3.84</div>
+                        <p style="margin-top: 1rem; color: #666;">Aug 2023 – May 2025 | New York City, NY</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add hover effects to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(2deg)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Dynamic background particles effect
+        function createParticles() {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: floatParticles ${5 + Math.random() * 10}s linear infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                hero.appendChild(particle);
+            }
+        }
+
+        // Add particle animation CSS
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes floatParticles {
+                0% { opacity: 0; transform: translateY(0px) rotate(0deg); }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+</html>
